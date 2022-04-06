@@ -1,0 +1,20 @@
+body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+    linear-gradient(160deg, rgb(231, 76, 48), rgb(199, 60, 106) 50%, rgba(56, 2, 23, 0.76) 50%), url('./Imagens/Imagem2.jpg');
+    background-attachment: fixed;
+    background-size: contain;
+}
+
+.row{
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+.column{
+    margin: 0px;
+    text-align: center;
+    padding: 10px;
+}
