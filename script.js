@@ -3,6 +3,7 @@ const botaoRemove = document.getElementById('btnRemove')
 const botaoLimpa = document.getElementById('btnLimpa')
 const nomeProduto = document.getElementById('nomeProd');
 const ul = document.getElementById('lista');
+const msgVazio = document.getElementById('pVazio')
 
 let listaUm = [];
 
@@ -26,6 +27,10 @@ function retiraItem(id) {
 }
 
 function atualizaTela() {
+    if (listaUm.length == 0){
+        msgVazio.innerHTML = 'Você ainda não adicionou nenhum produto!'} else{
+            msgVazio.innerHTML = '';
+        }
     ul.innerHTML = '';
     listaUm.forEach(function (item) {
     const btn = document.createElement('button');
