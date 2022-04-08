@@ -4,12 +4,9 @@ const botaoLimpa = document.getElementById('btnLimpa')
 const nomeProduto = document.getElementById('nomeProd');
 const ul = document.getElementById('lista');
 
-var indice = 0;
-
 let listaUm = [];
 
 const listaJSON = localStorage.getItem('listaUm');
-
 
 if (listaJSON) {
     listaUm = JSON.parse(listaJSON);
@@ -51,7 +48,11 @@ function salvaStorage() {
 
 function adicionaItem() {
     if (nomeProduto.value) {
-        indice = indice + 1;
+        var indice = 1;
+        listaUm.forEach(function (item) {
+            while (indice <= item.id){
+                indice++
+            }});
         listaUm.push({
             id: indice,
             name: nomeProduto.value,
@@ -69,6 +70,6 @@ botaoAdd.addEventListener('click', adicionaItem);
 
 nomeProduto.addEventListener('keydown', function (event) {
     if (event.key === 'Enter') {
-    addItem();
+    adicionaItem();
     }
 });

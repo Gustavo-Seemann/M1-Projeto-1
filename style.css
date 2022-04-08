@@ -42,6 +42,11 @@ ul{
     margin: 0px;
 }
 
+#listaP{
+    color:rgb(0, 0, 0);
+    text-align: center;
+}
+
 h4{
     margin-bottom: 3px;
     font-family: 'Merriweather', serif;
