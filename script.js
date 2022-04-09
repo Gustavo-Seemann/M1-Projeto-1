@@ -17,13 +17,31 @@ if (listaJSON) {
 function retiraItem(id) {
     const novaLista = [];
     listaUm.forEach(function (item) {
-    if (item.id !== id) {
-        novaLista.push(item);
-    }
+        if (item.id !== id) {
+            novaLista.push(item);
+        }
     })
     listaUm = novaLista;
     atualizaTela();
     salvaStorage();
+}
+
+function toggleProduto(id) {
+    listaUm.forEach(function (item){
+        if (item.id == id){
+            item.status = true;
+            item.preco = prompt(`Qual foi o preço pago no ${item.name}?`);
+            }
+    })
+    salvaStorage();
+}
+
+function removeComprado() {
+    listaUm.forEach(function (item){
+        if (item.status == true){
+            retiraItem(item.id);
+        }
+    })
 }
 
 function atualizaTela() {
@@ -33,17 +51,30 @@ function atualizaTela() {
         }
     ul.innerHTML = '';
     listaUm.forEach(function (item) {
-    const btn = document.createElement('button');
-    btn.innerHTML = 'x';
-    btn.onclick = function () {
-        retiraItem(item.id);
-    }
-    const li = document.createElement('li');
-    li.id = item.id;
-    li.innerHTML = item.name;
-    li.appendChild(btn);
-    ul.appendChild(li);
+        const checkbox = criaCheckbox(item.status);
+        checkbox.onclick = function (){
+            toggleProduto(item.id);
+        }
+        const btn = document.createElement('button');
+        btn.innerHTML = 'x';
+        btn.onclick = function () {
+            retiraItem(item.id);
+        }
+        const li = document.createElement('li');
+        li.id = item.id;
+        li.innerHTML = item.name;
+        li.appendChild(checkbox);
+        li.appendChild(btn);
+        ul.appendChild(li);
     });
+}
+
+function criaCheckbox(status, listener) {
+    const checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    checkbox.checked = status;
+    checkbox.onclick = listener;
+    return checkbox;
 }
 
 function salvaStorage() {
@@ -61,7 +92,8 @@ function adicionaItem() {
         listaUm.push({
             id: indice,
             name: nomeProduto.value,
-            preco: 0
+            preco: 0,
+            status: false
     });
     nomeProduto.value = '';
     atualizaTela();
@@ -71,6 +103,7 @@ function adicionaItem() {
     }
 }
 
+botaoRemove.addEventListener('click', removeComprado);
 botaoAdd.addEventListener('click', adicionaItem);
 
 nomeProduto.addEventListener('keydown', function (event) {
