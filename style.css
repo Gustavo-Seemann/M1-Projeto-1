@@ -42,6 +42,11 @@ ul{
     margin: 0px;
 }
 
+#pVazio{
+    color:rgb(0, 0, 0);
+    text-align: center;
+}
+
 h4{
     margin-bottom: 3px;
     font-family: 'Merriweather', serif;
@@ -53,6 +58,7 @@ li{
     font-family: 'Merriweather', serif;
     color: rgb(151, 16, 7);
     font-size: 15px;
+    margin-left: 13px;
 }
 
 #precoTotal{

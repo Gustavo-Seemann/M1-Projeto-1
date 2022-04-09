@@ -9,7 +9,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,300&display=swap" rel="stylesheet">
+<script src="./script.js" defer></script>
     <title>Lista de Compras</title>
+
 </head>
 <body>
     <div class="row">
@@ -26,26 +28,18 @@
         </div>
 
         <div class="column" id="coluna2">
-            <ul><h4>PRODUTOS:</h4></ul>
-            <input type="text" id="produto" placeholder="Insira o nome do produto:"><br>
+            <h4>PRODUTOS:</h4>
+            <input type="text" id="nomeProd" placeholder="Insira o nome do produto:"><br>
 
             <div id="botao">
-                <button>Adicionar</button>
-                <button>Remover</button>
-                <button>Limpar Lista</button>
+                <button id="btnAdd">Adicionar</button>
+                <button id="btnRemove">Remover</button>
+                <button id="btnLimpa">Limpar Lista</button>
             </div>
 
             <div id="itens">
-                <li>batata</li>
-                <li>oi steph tudo bom?</li>
-                <li>batata</li>
-                <li>batata</li>
-                <li>batata</li>
-                <li>batata</li>
-                <li>batata</li>
-                <li>batata</li>
-                <li>batata</li>
-                <li>batata</li>
+                <ul id="lista"></ul>
+                <p id="pVazio"></p>
             </div>
     </div>
     </div>
