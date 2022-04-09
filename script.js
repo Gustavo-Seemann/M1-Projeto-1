@@ -9,6 +9,8 @@ let listaUm = [];
 
 const listaJSON = localStorage.getItem('listaUm');
 
+msgVazio.innerHTML = 'Você ainda não adicionou nenhum produto!'
+
 if (listaJSON) {
     listaUm = JSON.parse(listaJSON);
     atualizaTela();
@@ -26,14 +28,32 @@ function retiraItem(id) {
     salvaStorage();
 }
 
+function removeTudo(){
+    while (listaUm.length) { 
+        listaUm.pop(); 
+    }
+    localStorage.clear();
+    location.reload();
+}
+
+
 function toggleProduto(id) {
     listaUm.forEach(function (item){
         if (item.id == id){
             item.status = true;
-            item.preco = prompt(`Qual foi o preço pago no ${item.name}?`);
+            item.preco = promptInt(`Qual foi o valor pago no produto: ${item.name}?`, "Por favor, digite um número.\nTente novamente.");
             }
     })
     salvaStorage();
+}
+
+function promptInt(mensagem, tenteNovamente) {
+    var msg = mensagem;
+    while (true) {
+        var ret = parseInt(prompt(msg));
+        if (!isNaN(ret)) return ret;
+        msg = tenteNovamente;
+    }
 }
 
 function removeComprado() {
@@ -103,6 +123,7 @@ function adicionaItem() {
     }
 }
 
+botaoLimpa.addEventListener('click', removeTudo);
 botaoRemove.addEventListener('click', removeComprado);
 botaoAdd.addEventListener('click', adicionaItem);
 
