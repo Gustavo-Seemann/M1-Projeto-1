@@ -19,7 +19,7 @@ msgVazio.innerHTML = 'Você ainda não adicionou nenhum produto!'
 if (listaJSON) {
     listaUm = JSON.parse(listaJSON);
     atualizaTela();
-}
+};
 
 function retiraItem(id) {
     const novaLista = [];
@@ -32,7 +32,7 @@ function retiraItem(id) {
     SomaTudo()
     atualizaTela();
     salvaStorage();
-}
+};
 
 function removeTudo(){
     while (listaUm.length) { 
@@ -40,7 +40,7 @@ function removeTudo(){
     }
     localStorage.clear();
     location.reload();
-}
+};
 
 function toggleProduto(id) {
     abrePopup()
@@ -52,13 +52,13 @@ function toggleProduto(id) {
                 item.name = `<s>${item.name}</s>`
                 }
             })
-            popup.style.display = 'none';
-            produtoValor.value = '';
-            SomaTudo()
-            salvaStorage()
-            location.reload();
-        }
-}
+        popup.style.display = 'none';
+        produtoValor.value = '';
+        SomaTudo()
+        salvaStorage()
+        location.reload();
+    }
+};
 
 function SomaTudo() {
     var precoTotal = 0;
@@ -66,8 +66,7 @@ function SomaTudo() {
         precoTotal = precoTotal + item.preco;
     })
     paragTotal.innerHTML = `R$${precoTotal}`
-    console.log(precoTotal);
-}
+};
 
 function removeComprado() {
     listaUm.forEach(function (item){
@@ -75,13 +74,14 @@ function removeComprado() {
             retiraItem(item.id);
         }
     })
-}
+};
 
 function atualizaTela() {
     if (listaUm.length == 0){
-        msgVazio.innerHTML = 'Você ainda não adicionou nenhum produto!'} else{
-            msgVazio.innerHTML = '';
-        }
+        msgVazio.innerHTML = 'Você ainda não adicionou nenhum produto!'}
+    else {
+        msgVazio.innerHTML = '';
+    }
     SomaTudo();
     ul.innerHTML = '';
     listaUm.forEach(function (item) {
@@ -102,7 +102,7 @@ function atualizaTela() {
         li.appendChild(btn);
         ul.appendChild(li);
     });
-}
+};
 
 function criaCheckbox(status, listener) {
     const checkbox = document.createElement('input');
@@ -111,12 +111,12 @@ function criaCheckbox(status, listener) {
     checkbox.onclick = listener;
     checkbox.className = 'checkbox';
     return checkbox;
-}
+};
 
 function salvaStorage() {
     const listaJSON = JSON.stringify(listaUm);
     localStorage.setItem('listaUm', listaJSON);
-}
+};
 
 function adicionaItem() {
     if (nomeProduto.value) {
@@ -130,25 +130,18 @@ function adicionaItem() {
             name: nomeProduto.value,
             preco: 0,
             status: false
-    });
+        });
     nomeProduto.value = '';
     atualizaTela();
     salvaStorage();
     } else {
         alert('Verifique o nome do produto!');
     }
-}
+};
 
 function abrePopup() {
     popup.style.display = 'block';
-}
-
-function pegaValor() {
-    botaoAddValor.onclick = function () {
-        const valor = produtoValor.value;
-    return valor}
-}
-
+};
 
 botaoLimpa.addEventListener('click', removeTudo);
 botaoRemove.addEventListener('click', removeComprado);
@@ -165,9 +158,8 @@ popup.addEventListener('click', event => {
     const ClassNames = ['popup-close', 'popup-wrapper']
     const deveFecharPopUp = ClassNames.some(ClassName => 
         ClassName === ClassNamedoElementoClicado)
-
     if (deveFecharPopUp){
         popup.style.display = 'none';
         location.reload();
     }
-})
+});
