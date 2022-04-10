@@ -1,13 +1,14 @@
-const botaoAdd = document.getElementById('btnAdd')
-const botaoRemove = document.getElementById('btnRemove')
-const botaoLimpa = document.getElementById('btnLimpa')
+const botaoAdd = document.getElementById('btnAdd');
+const botaoRemove = document.getElementById('btnRemove');
+const botaoLimpa = document.getElementById('btnLimpa');
 const nomeProduto = document.getElementById('nomeProd');
 const ul = document.getElementById('lista');
 const msgVazio = document.getElementById('pVazio');
 const popup = document.querySelector('.popup-wrapper');
-const botaoAddValor = document.getElementById('btnAddValor')
-const produtoValor = document.getElementById('valorProduto')
-const pPopUp = document.getElementById('pPopup')
+const botaoAddValor = document.getElementById('btnAddValor');
+const produtoValor = document.getElementById('valorProduto');
+const pPopUp = document.getElementById('pPopup');
+const paragTotal = document.getElementById('totalPreco');
 
 let listaUm = [];
 
@@ -28,6 +29,7 @@ function retiraItem(id) {
         }
     })
     listaUm = novaLista;
+    SomaTudo()
     atualizaTela();
     salvaStorage();
 }
@@ -46,23 +48,25 @@ function toggleProduto(id) {
         listaUm.forEach(function (item){
             if (item.id == id){
                 item.status = true;
-                item.preco = produtoValor.value;
+                item.preco = Number(produtoValor.value);
                 item.name = `<s>${item.name}</s>`
                 }
             })
             popup.style.display = 'none';
             produtoValor.value = '';
+            SomaTudo()
             salvaStorage()
             location.reload();
         }
 }
 
-function verificaStatus() {
+function SomaTudo() {
+    var precoTotal = 0;
     listaUm.forEach(function (item){
-        if (item.preco !== NaN){
-            item.status = false;
-        }
+        precoTotal = precoTotal + item.preco;
     })
+    paragTotal.innerHTML = `R$${precoTotal}`
+    console.log(precoTotal);
 }
 
 function removeComprado() {
@@ -78,6 +82,7 @@ function atualizaTela() {
         msgVazio.innerHTML = 'Você ainda não adicionou nenhum produto!'} else{
             msgVazio.innerHTML = '';
         }
+    SomaTudo();
     ul.innerHTML = '';
     listaUm.forEach(function (item) {
         const checkbox = criaCheckbox(item.status);
@@ -86,6 +91,7 @@ function atualizaTela() {
         }
         const btn = document.createElement('button');
         btn.innerHTML = 'x';
+        btn.className = 'botaoLista';
         btn.onclick = function () {
             retiraItem(item.id);
         }
@@ -103,6 +109,7 @@ function criaCheckbox(status, listener) {
     checkbox.type = 'checkbox';
     checkbox.checked = status;
     checkbox.onclick = listener;
+    checkbox.className = 'checkbox';
     return checkbox;
 }
 
@@ -121,7 +128,7 @@ function adicionaItem() {
         listaUm.push({
             id: indice,
             name: nomeProduto.value,
-            preco: '',
+            preco: 0,
             status: false
     });
     nomeProduto.value = '';
@@ -161,7 +168,6 @@ popup.addEventListener('click', event => {
 
     if (deveFecharPopUp){
         popup.style.display = 'none';
-        verificaStatus();
         location.reload();
     }
 })
