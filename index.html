@@ -11,7 +11,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,300&display=swap" rel="stylesheet">
 <script src="./script.js" defer></script>
     <title>Lista de Compras</title>
-
 </head>
 <body>
     <div class="row">
@@ -21,23 +20,22 @@
                 <img src="./Imagens/Imagem1.png" width="150px">
                 <div id="precoTotal">
                     <h2>Preço total:</h2>
-                    <p>R$1000000000.00</p>
+                    <p id="totalPreco">R$0</p>
                 </div>
         </div>
-
         <div class="column" id="coluna2">
-            <h4>PRODUTOS:</h4>
+            <label for="nomeProd"><h4>PRODUTOS:</h4></label>
             <input type="text" id="nomeProd" placeholder="Insira o nome do produto:"><br>
             <div id="botao">
-                <button id="btnAdd">Adicionar</button>
-                <button id="btnRemove">Remover</button>
-                <button id="btnLimpa">Limpar Lista</button>
+                <button class='botoes' id="btnAdd">Adicionar</button>
+                <button class='botoes' id="btnRemove">Remover Comprados</button>
+                <button class='botoes' id="btnLimpa">Limpar Lista</button>
             </div>
             <div id="itens">
                 <ul id="lista"></ul>
                 <p id="pVazio"></p>
             </div>
-    </div>
+        </div>
     </div>
     <div class="popup-wrapper">
         <div class="popup">

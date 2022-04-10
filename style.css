@@ -92,16 +92,30 @@ input{
 button {
     background-color: rgb(151, 16, 7);
     color: rgb(255, 255, 255);
-    border: 0px solid rgb(0, 0, 0);
+    border: 1px solid rgb(0, 0, 0);
     font-family: 'Merriweather', serif;
     padding: 3px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    margin-left: 7px;
     text-align: center;
-    margin-top: 10px;
-    margin-left: 20px;
     -webkit-transition-duration: 0.4s;
     transition-duration: 0.4s;
     cursor: pointer;
     border-radius: 5px;
+}
+
+.botaoLista {
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 2px;
+    font-size: 9px;
+    border-radius: 30px;
+}
+
+.botoes {
+    padding: 3px;
+    margin-top: 10px;
+    margin-left: 20px;
 }
 
 button:hover {
@@ -135,4 +149,10 @@ button:hover {
     top: 5px;
     right: 10px;
     cursor: pointer;
+}
+
+.checkbox{
+    padding-left: 5px;
+    margin: 0%;
+    margin-left: 10px;
 }
