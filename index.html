@@ -18,9 +18,7 @@
         <div class="column" id="coluna1">
                 <h1>Lista de Compras</h1>
                 <p>Controle e gerencie sua lista de compras aqui!</p>
-
                 <img src="./Imagens/Imagem1.png" width="150px">
-
                 <div id="precoTotal">
                     <h2>Preço total:</h2>
                     <p>R$1000000000.00</p>
@@ -30,18 +28,27 @@
         <div class="column" id="coluna2">
             <h4>PRODUTOS:</h4>
             <input type="text" id="nomeProd" placeholder="Insira o nome do produto:"><br>
-
             <div id="botao">
                 <button id="btnAdd">Adicionar</button>
                 <button id="btnRemove">Remover</button>
                 <button id="btnLimpa">Limpar Lista</button>
             </div>
-
             <div id="itens">
                 <ul id="lista"></ul>
                 <p id="pVazio"></p>
             </div>
     </div>
+    </div>
+    <div class="popup-wrapper">
+        <div class="popup">
+            <div class="popup-close">x</div>
+            <div class="popup-content">
+                <h2>Insira um preço!</h2>
+                <p id="pPopup">Qual o valor pago no produto?</p>
+                <input type="number" id='valorProduto' placeholder="R$0.00">
+                <button id="btnAddValor">Enviar</button>
+            </div>
+        </div>
     </div>
 </body>
 </html>
