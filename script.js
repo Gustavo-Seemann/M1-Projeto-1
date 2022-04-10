@@ -44,6 +44,11 @@ function removeTudo(){
 
 function toggleProduto(id) {
     abrePopup()
+    listaUm.forEach(function (item){
+        if (item.id == id){
+            pPopUp.innerHTML = `Qual foi o valor pago em ${item.name}?`
+        }
+    })
     botaoAddValor.onclick = function () {
         listaUm.forEach(function (item){
             if (item.id == id){
